@@ -1,19 +1,17 @@
-import { Image, View, Pressable, TouchableOpacity,  StyleSheet, Text, useWindowDimensions, ScrollView} from 'react-native'
+import { Image, View, Pressable, TouchableOpacity,  StyleSheet, Text, useWindowDimensions} from 'react-native'
 import { colors } from '../global/colors'
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import React, { useState, useEffect } from 'react';
 import { texts } from '../global/texts';
 import Stars from '../components/Stars'
+import { useNavigation } from '@react-navigation/native'
 
-const ProductItem = ({product,handleProductDetailId}) => {
+const ProductItem = ({product}) => {
 
   const {width, height} = useWindowDimensions()
-  
-
+  const navigation = useNavigation()
 
   return (
     
-    <Pressable style={styles.container} onPress={()=>handleProductDetailId(product.id)} key={product.id}>
+    <Pressable style={styles.container} onPress={()=>navigation.navigate("Detail",{ productId: product.id})} key={product.id}>
     
         <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
           <Image
@@ -24,14 +22,15 @@ const ProductItem = ({product,handleProductDetailId}) => {
           />
           <Text style={styles.name}>{product.title}</Text>
           <Text style={styles.price}>{texts.currency_symbol} {product.price}</Text>         
-           <Stars />
-          <TouchableOpacity style={styles.shareButton} onPress={()=>handleProductDetailId(product.id)}>
+          <Stars />
+          {/* <TouchableOpacity style={styles.shareButton} onPress={()=>navigation.navigate("Detail",{id: product.id})}>
                 <Text style={styles.shareButtonText}>Comprar</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         
    </Pressable>
   )
+
 }
 
 export default ProductItem

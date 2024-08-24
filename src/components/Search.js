@@ -10,27 +10,53 @@ import { placeholders } from '../global/texts'
 
 const Search = ({onSearch}) => {
 
+    const [input,setInput] = useState("")
+    const [error,setError] = useState("")
+
+    const handleInputChange = (t) => {
+        setInput(t)
+    }
+
+    const handleRemoveInput = () => {
+        setInput("")
+        onSearch("")
+        setError("")
+    }
+
+    const search = () => {
+
+        const regex = /[^a-zA-Z0-9 ]/
+        if(regex.test(input)){
+            setError("Caracteres no validos")
+        }else{
+            setError("")
+            onSearch(input)
+        }
+
+    }
    
-  return (
-    <View style={styles.container}>
-        <View style={styles.containerInput}>
-            <TextInput
-                style={styles.input}
-                placeholder={placeholders.search}
-                underlineColorAndroid="transparent"
-            />
-            <View style={styles.buttonContainer}>
-                <Pressable >
-                    <EvilIcons name="search" size={32} color="black" />
-                </Pressable>
-                <Pressable>
-                    <EvilIcons name="trash" size={32} color="black" />
-                </Pressable>
-            </View>  
+    return (
+        <View style={styles.container}>
+            <View style={styles.containerInput}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={placeholders.search}
+                    underlineColorAndroid="transparent"
+                    value={input}
+                    onChangeText={handleInputChange}
+                />
+                <View style={styles.buttonContainer}>
+                    <Pressable onPress={search}>
+                        <EvilIcons name="search" size={32} color="black" />
+                    </Pressable>
+                    <Pressable onPress={handleRemoveInput}>
+                        <EvilIcons name="trash" size={32} color="black" />
+                    </Pressable>
+                </View>  
+            </View>
+            <View style={styles.containerError}><Ionicons name="bug-outline" size={15} color="black" /><Text style={styles.error}>{"Hola soy un error"}</Text></View>
         </View>
-        <View style={styles.containerError}><Ionicons name="bug-outline" size={15} color="black" /><Text style={styles.error}>{"Hola soy un error"}</Text></View>
-    </View>
-  )
+    )
 }
 
 export default Search

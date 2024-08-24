@@ -1,9 +1,13 @@
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import { colors } from '../global/colors'
+import { useNavigation } from '@react-navigation/native'
 
-const Category = ({item,handleCategorySelected}) => {
+const Category = ({item}) => {
+
+  const navigation = useNavigation()
+
   return (
-    <Pressable onPress={()=>handleCategorySelected(item)}>
+    <Pressable onPress={()=>navigation.navigate("Products",{ categoryName: item.name, categoryTitle: item.title})}>
 
           <View style={styles.itemContainer}>
             <Image
@@ -14,27 +18,17 @@ const Category = ({item,handleCategorySelected}) => {
             <Text style={styles.text} numberOfLines={2} ellipsizeMode="tail">{item.name}</Text>
           </View>
     </Pressable>
-
+    
   )
+
 }
 
 export default Category
 
 const styles = StyleSheet.create({
-    // container:{
-    //     width:"90%",
-    //     marginHorizontal:"5%",
-    //     backgroundColor:colors.green1,
-    //     marginVertical:10,
-    //     padding:20,
-    //     justifyContent:"center",
-    //     alignItems:"center",
-    //     borderRadius:3,
- 
-    // },
+
     itemContainer: {
         alignItems: 'center',
-        // //borderRadius: 8,
         marginHorizontal:20,
         marginVertical:20,
         height: 150,

@@ -1,31 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, StyleSheet, SafeAreaView, Text} from 'react-native'
-
-import Header from '../components/Header'
+import { FlatList,View,Text, StyleSheet} from 'react-native'
 import Search from '../components/Search'
 import ProductItem from '../components/ProductItem'
+import { useGetProductsByCategoryQuery } from '../services/shop'
 
-import products from '../data/products.json'
 
+const ItemListCategories = ({route}) => {
 
-const ItemListCategories = ({category, category_title}) => {
-
+  const {categoryName} = route.params
+  const {data: products, isSuccess, isLoading, isError, error} = useGetProductsByCategoryQuery(categoryName)
   const [productsFiltered,setProductsFiltered] = useState([])
 
   useEffect(()=>{
-    setProductsFiltered(products.filter(product => product.category === category))
-  },[category])
+    if(isSuccess){
+      setProductsFiltered(products)
+    }
+  },[categoryName,isSuccess])
+
+  const onSearch = (input) => {
+
+    if(input){
+      setProductsFiltered(productsFiltered.filter(product => product.title.includes(input) ))
+    }else{
+      setProductsFiltered(products)
+    }
+   
+  }
+
+  if(isLoading) return <View><Text>cargando</Text></View>
+  if(isError) return <View><Text>{error.message}</Text></View>
 
   return (
-    <SafeAreaView style={styles.container}>
-        <Header title={category_title} />
-        <Search />
+    <View style={styles.container}>
+        <Search onSearch={onSearch} />
         <FlatList
           data={productsFiltered}
           keyExtractor={item=>item.id}
           renderItem={({item})=> <ProductItem product={item} />}
         />
-    </SafeAreaView>
+    </View>
   )
 }
 
@@ -35,6 +48,5 @@ const styles = StyleSheet.create({
   container:{
     width:"100%",
     height:"100%"
-
   }
 })

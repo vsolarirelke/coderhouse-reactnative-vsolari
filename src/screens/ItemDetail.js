@@ -1,45 +1,59 @@
-import { Image, Pressable, StyleSheet, Text, View ,SafeAreaView, ScrollView, TouchableOpacity} from 'react-native'
+import { Image, StyleSheet, Text, View , ScrollView, TouchableOpacity} from 'react-native'
 import React from 'react'
-import Header from '../components/Header'
 import products from '../data/products.json'
-import { titles, texts } from '../global/texts'
+import { texts } from '../global/texts'
 import { colors } from '../global/colors'
 import Stars from '../components/Stars'
+import { addItemCart } from '../features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+import { useGetProductByIdQuery } from '../services/shop'
 
-const ItemDetail = ({id}) => {
+const ItemDetail = ({route}) => {
 
-  const product = products[id] 
+  const {productId} = route.params
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+
+  //const product = products[id]
+  const {data:product,isSuccess,isLoading,isError,error} = useGetProductByIdQuery(productId)
+  const handleAddItemCart = () => {
+    dispatch(addItemCart({...product,quantity:1}))
+    navigation.navigate("CartStack")
+  }
+
+  if(isLoading) return <View><Text>cargando</Text></View>
+  if(isError) return <View><Text>{error.message}</Text></View>
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title={titles.product_detail} /> 
+    <View style={styles.container}>
       <View style={styles.container}>
-      <ScrollView>
-        <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
-          <Image
-            style={styles.productImg}
-            resizeMode='contain'
-            source={{
-              uri: product.thumbnail,
-            }}
-          />
-          <Text style={styles.name}>Super Soft T-Shirt</Text>
-          <Text style={styles.price}>{texts.currency_symbol} {product.price}</Text>
-          <Text style={styles.description}>
-            {product.description}
-          </Text>
-        </View>
-        <Stars/>
-        
-        <View style={styles.separator}></View>
-        <View style={styles.addToCarContainer}>
-          <TouchableOpacity style={styles.shareButton} onPress={() => clickEventListener()}>
-            <Text style={styles.shareButtonText}> Agregar al carro</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        <ScrollView>
+          <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
+            <Image
+              style={styles.productImg}
+              resizeMode='contain'
+              source={{
+                uri: product.thumbnail,
+              }}
+            />
+            <Text style={styles.name}>{product.title}</Text>
+            <Text style={styles.price}>{texts.currency_symbol} {product.price}</Text>
+            <Text style={styles.description}>
+              {product.description}
+            </Text>
+          </View>
+          <Stars/>
+          
+          <View style={styles.separator}></View>
+          <View style={styles.addToCarContainer}>
+            <TouchableOpacity style={styles.shareButton} onPress={handleAddItemCart}>
+              <Text style={styles.shareButtonText}> Agregar al carro</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
     </View>
-    </SafeAreaView>
   )
 }
 
