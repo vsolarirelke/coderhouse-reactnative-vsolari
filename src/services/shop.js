@@ -20,13 +20,14 @@ export const shopApi = createApi({
             }
         }),
         getProductById:builder.query({
-            query:(productId) => `/products.json?orderBy="id"&equalTo=${productId}`,
-            transformResponse:(response) =>{
-                const data = Object.values(response)
-                console.log("********")
-                console.log(data)
-                return data.length > 0 ? data[0] : null;
-            }
+            //query:(productId) => `/products.json?orderBy="id"&equalTo=${productId}`,
+            query:(productId) => `/products/${productId}.json`,
+            // transformResponse:(response) =>{
+            //     const data = Object.values(response)
+            //     console.log("********")
+            //     console.log(data)
+            //     return data.length > 0 ? data[0] : null;
+            // }
         })
     })
 })
