@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         padding: 15,
         marginVertical: 10,
-        marginHorizontal: 20
-        
+        marginHorizontal: 20,
       },
       productImg: {
         width: 200,

@@ -1,9 +1,16 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import { colors } from '../global/colors'
-
+import { removeCartItem } from '../features/cart/cartSlice'
 
 const CartItem = ({item}) => {
+
+  const dispatch = useDispatch();
+  const handleRemoveItem = (itemId) => {
+    dispatch(removeCartItem(itemId));
+  };
+
   return (
     // <View style={styles.container}>
     //   <View style={styles.containerText}>
@@ -22,7 +29,7 @@ const CartItem = ({item}) => {
           <Text style={styles.productTotal}>Total: ${item.price*item.quantity} </Text>
         </View>
         <View style={styles.productAmount}>
-          <EvilIcons name="trash" size={35} color="black" />
+          <EvilIcons name="trash" size={35} color="black" onPress={() => handleRemoveItem(item.id)} />
         </View>
       </View>
 

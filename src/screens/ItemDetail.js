@@ -5,24 +5,28 @@ import { texts } from '../global/texts'
 import { colors } from '../global/colors'
 import Stars from '../components/Stars'
 import { addItemCart } from '../features/cart/cartSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { useGetProductByIdQuery } from '../services/shop'
+import LoadingSpinner from '../components/LoadingSpinner'
+import Counter from '../components/Counter'
 
 const ItemDetail = ({route}) => {
 
+  //const product = products[id]
+  //const {id} = route.params
   const {productId} = route.params
   const navigation = useNavigation()
   const dispatch = useDispatch()
-
-  //const product = products[id]
+  const count = useSelector((state)=> state.counter.value)
   const {data:product,isSuccess,isLoading,isError,error} = useGetProductByIdQuery(productId)
+  
   const handleAddItemCart = () => {
-    dispatch(addItemCart({...product,quantity:1}))
+    dispatch(addItemCart({...product, quantity: count}))
     navigation.navigate("CartStack")
   }
 
-  if(isLoading) return <View><Text>cargando</Text></View>
+  if(isLoading) return <LoadingSpinner/>
   if(isError) return <View><Text>{error.message}</Text></View>
 
   return (
@@ -44,8 +48,7 @@ const ItemDetail = ({route}) => {
             </Text>
           </View>
           <Stars/>
-          
-          <View style={styles.separator}></View>
+          <Counter/>
           <View style={styles.addToCarContainer}>
             <TouchableOpacity style={styles.shareButton} onPress={handleAddItemCart}>
               <Text style={styles.shareButtonText}> Agregar al carro</Text>
@@ -62,7 +65,9 @@ export default ItemDetail
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 20,
+      paddingTop: 20,
+      backgroundColor: "white"
+
     },
     productImg: {
       width: 200,

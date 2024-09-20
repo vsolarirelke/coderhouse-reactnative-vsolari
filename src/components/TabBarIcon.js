@@ -19,6 +19,5 @@ export default TabBarIcon
 const styles = StyleSheet.create({
     container:{
         alignItems:"center",
-        gap:2
-    }
+        gap:2    }
 })

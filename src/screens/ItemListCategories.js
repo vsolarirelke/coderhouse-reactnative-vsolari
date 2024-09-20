@@ -3,6 +3,8 @@ import { FlatList,View,Text, StyleSheet} from 'react-native'
 import Search from '../components/Search'
 import ProductItem from '../components/ProductItem'
 import { useGetProductsByCategoryQuery } from '../services/shop'
+import LoadingSpinner from '../components/LoadingSpinner'
+import { colors } from '../global/colors'
 
 
 const ItemListCategories = ({route}) => {
@@ -27,7 +29,7 @@ const ItemListCategories = ({route}) => {
    
   }
 
-  if(isLoading) return <View><Text>cargando</Text></View>
+  if(isLoading) return <LoadingSpinner/>
   if(isError) return <View><Text>{error.message}</Text></View>
 
   return (
@@ -47,6 +49,7 @@ export default ItemListCategories
 const styles = StyleSheet.create({
   container:{
     width:"100%",
-    height:"100%"
+    height:"100%",
+    backgroundColor: colors.white
   }
 })

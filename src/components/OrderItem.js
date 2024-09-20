@@ -1,43 +1,72 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { colors } from '../global/colors';
-
+import { useNavigation } from '@react-navigation/native';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 const OrderItem = ({item}) => {
+
+  const navigation = useNavigation()
+
   return (
-    <View style={styles.container}>
-      <View style={styles.containerText}>
-        <Text style={styles.date}>{new Date(item.createdAt).toLocaleString()}</Text>
-        <Text style={styles.total}>Total: {item.total} $</Text>
+    // <View style={styles.container}>
+    //   <View style={styles.containerText}>
+    //     <Text style={styles.date}>{item.createdAt}</Text>
+    //     <Text style={styles.total}>Total: $ {item.total}</Text>
+    //   </View>
+    //   <Pressable onPress={()=>navigation.navigate("OrderDetail",{id:item.id})}>
+    //     <AntDesign name="search1" size={48} color="black" />
+    //     </Pressable>
+    // </View>
+    <Pressable onPress={()=>navigation.navigate("OrderDetail",{id:item.id})}>
+      <View style={styles.productCard}>
+        <FontAwesome5 name="receipt" size={30} color="black" />
+        <View style={styles.productInfo}>
+          <Text style={styles.productDate}>Fecha: {item.createdAt}</Text>
+          <Text style={styles.productTotal}>Total: ${item.total} </Text>
+        </View>
+        <View style={styles.productAmount}>
+          <AntDesign name="search1" size={30} color="black" />
+        </View>
       </View>
-      <AntDesign name="search1" size={48} color="black" />
-    </View>
+    </Pressable>
   )
 }
 
 export default OrderItem
 
 const styles = StyleSheet.create({
-    container:{
-        borderColor:colors.green3,
-        borderWidth:2,
-        width:"90%",
-        marginHorizontal:"5%",
-        marginVertical:10,
-        padding:20,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        borderRadius:3
+    
+    productCard: {
+      width:"90%",
+      marginHorizontal:"5%",
+      backgroundColor:colors.white,
+      
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      shadowColor: '#000',
+      shadowOpacity: 0.2,
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 4,
+      padding: 16,
+      marginBottom: 15,
+      marginTop: 15
     },
-    containerText:{
-        gap:20
+    
+    productInfo: {
+      flex: 1,
+      marginRight: 16,
+      marginLeft: 20,
     },
-    date:{
-        fontSize:16
+    productDate: {
+      fontSize: 16,
     },
-    total:{
-        fontSize:20,
-        fontWeight:"bold"
-    }
+    productTotal:{
+      fontWeight: 'bold',
+      color: colors.black,
+      fontSize: 16,
+    },
 })

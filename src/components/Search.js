@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { colors } from '../global/colors'
 
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { placeholders } from '../global/texts'
 
@@ -54,7 +53,7 @@ const Search = ({onSearch}) => {
                     </Pressable>
                 </View>  
             </View>
-            <View style={styles.containerError}><Ionicons name="bug-outline" size={15} color="black" /><Text style={styles.error}>{"Hola soy un error"}</Text></View>
+            <View style={styles.containerError}><Text style={styles.error}>{error}</Text></View>
         </View>
     )
 }

@@ -1,83 +1,110 @@
-import { Pressable, StyleSheet, Text, View,TextInput } from 'react-native'
-import React, { useState } from 'react'
-import { colors } from '../global/colors'
+import { Pressable, StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { colors } from "../global/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment, incrementByAmount, reset } from "../features/counter/counterSlice"
 
 const Counter = () => {
 
-    const [input,setInput] = useState(0)
+  const count = useSelector((state)=> state.counter.value)
+  const dispatch = useDispatch()
 
-    const handleInput = (t) => {
-        setInput(Number(t))
-    }
-
-
+  const [inputToAdd, setInputToAdd] = useState(null);
+  
   return (
     <View style={styles.container}>
-        <View style={styles.containerCounter}>
-            <Pressable onPress={()=>console.log("va a restar")} style={styles.button}>
-                <Text style={styles.buttonText}>-</Text>
-            </Pressable>
-            <View style={styles.count}>
-                <Text>{count}</Text>
-            </View>
-           
-            <Pressable onPress={()=>console.log("va a sumar")} style={styles.button}>
-                <Text style={styles.buttonText}>+</Text>
-            </Pressable>
-        </View>
-        <View style={styles.containerInput}>
-            <TextInput
-                style={styles.input}
-                value={String(input)}
-                onChangeText={handleInput}
-            />
-            <Pressable onPress={()=>console.log("suma monto")} style={styles.button}>
-                <Text style={styles.buttonText}>Agregar</Text>
-            </Pressable>
-        </View>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.amountButton} onPress={() => dispatch(decrement())}>
+          <Text style={styles.amountButtonText}>-</Text>
+        </TouchableOpacity>
+        <Text style={styles.amountText}>{count}</Text>
+        <TouchableOpacity style={styles.amountButton} onPress={() => dispatch(increment())}>
+          <Text style={styles.amountButtonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonsContainer}>
+        <TextInput
+          placeholder="Cantidad a aumentar"
+          placeholderTextColor="black"
+          style={styles.spanInput}
+          onChangeText={setInputToAdd}
+          value={inputToAdd}
+        />
+      </View>
+      <Pressable style={styles.button} onPress={() => dispatch(incrementByAmount(Number(inputToAdd)))}>
+          <Text style={styles.buttonText}>Aumentar</Text>
+      </Pressable>
+      <Pressable style={styles.button} onPress={() => dispatch(reset())}>
+        <Text style={styles.buttonText}>Borrar</Text>
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default Counter
+export default Counter;
 
 const styles = StyleSheet.create({
-    container:{
-        alignItems:"center",
-        margin:10
-    },
-    containerCounter:{
-        flexDirection:"row"
-    },
-    button:{
-        backgroundColor:colors.green3,
-        minWidth:50,
-        alignItems:"center",
-        justifyContent:"center",
-        padding:10,
-        borderRadius:3,
-        margin:5
-    },
-    buttonText:{
-        color:"white",
-        fontSize:20
-    },
-    count:{
-        alignItems:"center",
-        justifyContent:"center",
-        width:100,
-        height:"auto",
-        textAlign:"center",
-        padding:10
-    },
-    containerInput:{
-        flexDirection:"row",
-        margin:10
-    },
-    input:{
-        width:60,
-        textAlign:"center",
-        borderWidth:1,
-        borderRadius:3,
-    }
-})
+  container: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: colors.green300,
+    padding: 10,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  button: {
+    padding: 10,
+    backgroundColor: colors.black,
+    width: "60%",
+    color: colors.white,
+    textAlign: "center",
+    fontSize: 16,
+    marginBottom: 5
+  },
+  span: {
+    backgroundColor: colors.lightGray,
+    width: "60%",
+    padding: 10,
+    textAlign: "center",
+    fontSize: 20,
+    color: colors.platinum,
+  },
+  spanInput: {
+    backgroundColor: colors.white,
+    width: "60%",
+    padding: 10,
+    textAlign: "center",
+    fontSize: 16,
+    color: colors.black,
+    borderWidth: 2
+  },
+  buttonText: {
+    color: colors.white,
+    textAlign: "center",
+    fontSize: 16,
+  },
+
+  amountButton: {
+    width: 30,
+    height: 30,
+    backgroundColor: colors.black,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  amountButtonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
+  amountText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginHorizontal: 16,
+  },
+});

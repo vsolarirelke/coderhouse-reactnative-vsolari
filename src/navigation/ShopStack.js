@@ -23,11 +23,11 @@ const ShopStack = () => {
                     }
                 }
             )}
-        >
-            <Stack.Screen name='Home' component={Home}/>
-            <Stack.Screen name='Products' component={ItemListCategories}/>
-            <Stack.Screen name='Detail' component={ItemDetail}/>
-        </Stack.Navigator>
+    >
+        <Stack.Screen name='Home' component={Home}/>
+        <Stack.Screen name='Products' component={ItemListCategories}/>
+        <Stack.Screen name='Detail' component={ItemDetail}/>
+    </Stack.Navigator>
   )
 }
 

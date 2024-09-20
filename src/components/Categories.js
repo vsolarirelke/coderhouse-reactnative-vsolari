@@ -1,27 +1,30 @@
-import { FlatList, Text } from 'react-native'
+import { FlatList, Text, View, StyleSheet } from 'react-native'
 import Category from './Category'
-//import categories from '../data/categories.json'
+import { colors } from '../global/colors'
 import { useGetCategoriesQuery } from '../services/shop'
+import LoadingSpinner from './LoadingSpinner'
 
 const Categories = () => {
 
-  const {data:categories} = useGetCategoriesQuery()
+  const {data:categories, isLoading} = useGetCategoriesQuery()
+
+  //Mientras carga
+  if(isLoading) return <LoadingSpinner/>
 
   return (
-      // <Text>Hola</Text>
-      
-      // <FlatList
-      //   data={categories}
-      //   keyExtractor={item => item.name}
-      //   numColumns={2}
-      //   renderItem={({item}) => <Category item={item} />}
-      // />
-      <FlatList
-        data={categories}
-        keyExtractor={item => item.id}
-        numColumns={2}
-        renderItem={({item}) => <Category item={item} />}
-      />
+      <View style={styles.container}>
+        <FlatList
+          data={categories}
+          keyExtractor={item => item.id}
+          numColumns={2}
+          renderItem={({item}) => <Category item={item} />}
+        />
+      </View>
   )
 }  
 export default Categories
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.white
+  }
+})
