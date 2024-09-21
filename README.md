@@ -29,6 +29,7 @@ La aplicación es un ejemplo funcional de una plataforma de Ecommerce desarrolla
     <img src="./screenshot/login/registrarse.PNG" width="200" >
    
    Descripción: Permite al usuario iniciar sesión y registrarse mediante correo y contraseña.
+    (*) La contraseña debe tener al menos una letra mayuscula, minusculas y numeros, debe ser de 8 digitos
 
 2. **Pantalla de Categorías y Productos - Tienda**
    
@@ -65,15 +66,20 @@ La aplicación es un ejemplo funcional de una plataforma de Ecommerce desarrolla
 
 ## 🚀 Instalación y Uso
 
-1. Clona el repositorio:
+1. Crear una carpeta en tu computador donde descargaras el proyecto
+
+2. Clona el repositorio:
    ```bash
    git clone https://github.com/vsolarirelke/coderhouse-reactnative-vsolari.git
 
-2. Instalar dependencias
+3. Ingresamos a la carpta del proyecto
+   ```bash
+   cd coderhouse-reactnative-vsolari
+
+4. Instalar dependencias
    ```bash
    npm install
 
-
-3. Iniciar proyecto
+5. Iniciar proyecto
    ```bash
    npx expo start

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import { colors } from '../global/colors'
+import { version } from '../global/version'
 import InputForm from '../components/InputForm'
 import SubmitButton from '../components/SubmitButton'
 import { useRegisterMutation } from '../services/auth'
@@ -92,6 +93,7 @@ const Register = ({navigation}) => {
             <Pressable onPress={()=> navigation.navigate("Login")} >
                 <Text style={styles.subLink}>Inciar sesion</Text>
             </Pressable>
+            <Text style={styles.sub}>{version.number}</Text>
         </View>
     </View>
   )
@@ -131,6 +133,7 @@ const styles = StyleSheet.create({
       },
       sub:{
         fontSize:14,
+        color: colors.white,
       },
       subLink:{
         fontSize:14,

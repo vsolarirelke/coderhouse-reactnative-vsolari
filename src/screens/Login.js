@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,Pressable, Image } from 'react-native'
 import { colors } from '../global/colors'
+import { version } from '../global/version'
 import { useEffect, useState } from 'react'
 import InputForm from '../components/InputForm'
 import SubmitButton from '../components/SubmitButton'
@@ -84,6 +85,7 @@ const Login = ({navigation}) => {
             <Pressable onPress={()=> navigation.navigate("Register")} >
                 <Text style={styles.subLink}>Registrarme</Text>
             </Pressable>
+            <Text style={styles.sub}>{version.number}</Text>
         </View>
     </View>
   )

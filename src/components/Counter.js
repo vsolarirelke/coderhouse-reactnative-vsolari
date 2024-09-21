@@ -31,10 +31,10 @@ const Counter = () => {
           value={inputToAdd}
         />
       </View>
-      <Pressable style={styles.button} onPress={() => dispatch(incrementByAmount(Number(inputToAdd)))}>
+      <Pressable style={styles.button} onPress={() => dispatch(incrementByAmount(Number(inputToAdd)), setInputToAdd(null))}>
           <Text style={styles.buttonText}>Aumentar</Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={() => dispatch(reset())}>
+      <Pressable style={styles.button} onPress={() => dispatch(reset(), setInputToAdd(null))}>
         <Text style={styles.buttonText}>Borrar</Text>
       </Pressable>
     </View>

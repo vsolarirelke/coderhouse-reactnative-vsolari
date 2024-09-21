@@ -19,7 +19,8 @@ export const counterSlice = createSlice({
 
     },
     incrementByAmount: (state, action) => {
-      state.value += action.payload;
+      const amount = Number.isFinite(action.payload) ? action.payload : 0;
+      state.value += amount;
     },
     reset: (state) => {
       state.value = 1;
