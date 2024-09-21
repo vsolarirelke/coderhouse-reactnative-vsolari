@@ -9,15 +9,6 @@ const OrderItem = ({item}) => {
   const navigation = useNavigation()
 
   return (
-    // <View style={styles.container}>
-    //   <View style={styles.containerText}>
-    //     <Text style={styles.date}>{item.createdAt}</Text>
-    //     <Text style={styles.total}>Total: $ {item.total}</Text>
-    //   </View>
-    //   <Pressable onPress={()=>navigation.navigate("OrderDetail",{id:item.id})}>
-    //     <AntDesign name="search1" size={48} color="black" />
-    //     </Pressable>
-    // </View>
     <Pressable onPress={()=>navigation.navigate("OrderDetail",{id:item.id})}>
       <View style={styles.productCard}>
         <FontAwesome5 name="receipt" size={30} color="black" />

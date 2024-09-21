@@ -11,6 +11,7 @@ const MyProfile = ({navigation}) => {
   const email    = useSelector(state => state.auth.email)
 
   const {data:user,isSuccess,isLoading,isError,error} = useGetUserQuery({localId})
+  
   useEffect(()=>{
     if(isSuccess) console.log(user)
     if(isError) console.log(error)
@@ -29,12 +30,6 @@ const MyProfile = ({navigation}) => {
       />
       <Text>{email}</Text>
       <SubmitButton title="Agregar imagen de perfil" onPress={()=>navigation.navigate("ImageSelector")}/>
-      {/* <SubmitButton title="Agregar localizacion" onPress={()=>navigation.navigate("LocationSelector")}/>
-        <FlatList
-          data={user.locations}
-          keyExtractor={item => item.id}
-          renderItem={({item})=> <View><Text>{item.address}</Text></View>}
-        /> */}
     </View>
   )
 }

@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View,StatusBar,Platform } from 'react-native'
+import { StyleSheet, View, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors } from '../global/colors'
 import FontAwesome from '@expo/vector-icons/FontAwesome';

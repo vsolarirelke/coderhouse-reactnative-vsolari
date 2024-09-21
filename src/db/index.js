@@ -1,6 +1,7 @@
 import * as SQLite from 'expo-sqlite'
 
 //Inicializa BD local en Celular
+//Se administra todo en una tabla sessionUser para manejar la sesion del usuario
 export const init = async () => {
     try {
         const db = await SQLite.openDatabaseAsync('session5.db')
@@ -31,7 +32,7 @@ export const fetchSession = async () => {
     return sessionUser
 }
 
-//Borra session
+//Borra session de BD tabla sessionUser
 export const deleteSession = async () => {
     const db = await SQLite.openDatabaseAsync('session5.db')
     const sessionDeleted = await db.runAsync('DELETE FROM sessionUser')

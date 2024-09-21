@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    backgroundColor: colors.green300,
     padding: 10,
   },
   buttonsContainer: {

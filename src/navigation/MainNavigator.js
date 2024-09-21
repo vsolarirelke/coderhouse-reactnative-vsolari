@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import AuthStack from './AuthStack'
 import TabNavigator from './TabNavigator'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSession } from '../db'
 import { setUser } from '../features/auth/authSlice'
@@ -22,16 +22,14 @@ const MainNavigator = () => {
       })()
     },[])
 
-  return (
-   <NavigationContainer>
-    {idToken ? <TabNavigator/>  : <AuthStack/> }
-    
-    </NavigationContainer>
-  )
+    return (
+      <NavigationContainer>
+        {idToken ? <TabNavigator/>  : <AuthStack/> }
+      
+      </NavigationContainer>
+    )
 }
 
 export default MainNavigator
 
-const styles = StyleSheet.create({
-  
-})
+const styles = StyleSheet.create({})

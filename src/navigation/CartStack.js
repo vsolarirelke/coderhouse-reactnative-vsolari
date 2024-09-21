@@ -6,17 +6,15 @@ const Stack = createNativeStackNavigator()
 
 const CartStack = () => {
   return (
-    <Stack.Navigator
-            screenOptions={(
+    <Stack.Navigator screenOptions={(
                 () => {
                     return {
                         header: () => <Header title="Carrito"/>
                     }
                 }
-            )}
-        >
-            <Stack.Screen name='Cart' component={Cart}/>
-        </Stack.Navigator>
+    )}>
+        <Stack.Screen name='Cart' component={Cart}/>
+    </Stack.Navigator>
   )
 }
 

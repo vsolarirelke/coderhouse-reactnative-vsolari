@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useGetOrderByUserQuery } from '../services/orders'

@@ -1,11 +1,8 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { colors } from '../global/colors'
-
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-
 import { placeholders } from '../global/texts'
-
 
 const Search = ({onSearch}) => {
 
@@ -68,7 +65,6 @@ const styles = StyleSheet.create({
     containerInput:{
         flexDirection: "row",
         justifyContent: "space-evenly",
-        //justifyContent: "space-around",
         alignItems:"center"
     },
     input:{
@@ -96,7 +92,5 @@ const styles = StyleSheet.create({
         color: colors.info,
         fontWeight:"400",
         paddingLeft: 10
-        // marginLeft:20,
-        // paddingTop: 10
     }
 })

@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import orders from '../data/orders.json'
+import { StyleSheet, View, FlatList } from 'react-native'
 import OrderItem from '../components/OrderItem'
 import {  useGetOrdersByUserQuery } from '../services/orders'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -13,7 +12,6 @@ const Orders = () => {
   
   if(isLoading) return <LoadingSpinner/>
 
-  //if(orders.length === 0) return <View><Text>Sin ordenes</Text></View>
   if(orders.length === 0) return <CenterMessage label={"No existen ordenes en su cuenta" } labelRedirect={"Comprar en Tienda"} navigateName={"HomeStack"}/>
 
   return (

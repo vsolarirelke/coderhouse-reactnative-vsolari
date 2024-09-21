@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TextInput , Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { colors } from '../global/colors'
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -8,13 +8,7 @@ const CenterMessage = ({label, labelRedirect, navigateName}) => {
     const navigation = useNavigation()
 
     return (
-        // <View style={styles.inputContainer}>
-        //     <EvilIcons name="search" size={24} color="black" />
-        //     <View><Text>{label}</Text></View>
-        //     <Pressable onPress={()=> navigation.navigate(navigateName)} >
-        //         <Text style={styles.subLink}>{labelRedirect}</Text>
-        //     </Pressable>
-        // </View>
+
         <View style={styles.container}>
             <View style={styles.inputContainer}>
             <EvilIcons name="search" size={50} color="black" />
@@ -32,31 +26,7 @@ const CenterMessage = ({label, labelRedirect, navigateName}) => {
 export default CenterMessage
 
 const styles = StyleSheet.create({
-    // inputContainer:{
-    //     width:"100%"
-    // },
-    // input:{
-    //     width:"90%",
-    //     borderWidth:0,
-    //     borderBottomWidth:3,
-    //     borderBottomColor:"white",
-    //     padding:2,
-    //     fontSize:14,
-    //     marginHorizontal:"5%",
-    //     marginVertical:10,
-    //     color: colors.white
-    //   },
-    //   titleInput:{
-    //     width:"90%",
-    //     marginHorizontal:"5%",
-    //     fontSize:16,
-    //     color: colors.white
-    //   },
-    //   error:{
-    //     fontSize:16,
-    //     color:"red",
-    //     marginLeft:20
-    //   }
+    
     container: {
         flex: 1, // Ocupa todo el espacio disponible
         justifyContent: 'center', // Centra verticalmente

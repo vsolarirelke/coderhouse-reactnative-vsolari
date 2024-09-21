@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, View , ScrollView, TouchableOpacity} from 'react-native'
 import React from 'react'
-import products from '../data/products.json'
 import { texts } from '../global/texts'
 import { colors } from '../global/colors'
 import Stars from '../components/Stars'
@@ -13,8 +12,6 @@ import Counter from '../components/Counter'
 
 const ItemDetail = ({route}) => {
 
-  //const product = products[id]
-  //const {id} = route.params
   const {productId} = route.params
   const navigation = useNavigation()
   const dispatch = useDispatch()
@@ -106,7 +103,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 30,
-      //backgroundColor: '#00BFFF',
       backgroundColor: colors.info
     },
     shareButtonText: {

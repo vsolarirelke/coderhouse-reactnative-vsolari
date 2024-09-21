@@ -17,13 +17,6 @@ const Header = ({title}) => {
   }
 
   return (
-    // <View style={styles.container}>
-    //   <AntDesign name="apple1" size={28} color="black" /><Text style={styles.text}>{title}</Text>
-    //   {idToken && 
-    //   <Pressable onPress={onLogout} style={styles.logout}>
-    //     <MaterialIcons name="logout" size={20} color="black" />
-    //   </Pressable>}
-    // </View>
     <View style={styles.container}>
       <View style={styles.centerContent}>
         <AntDesign name="apple1" size={28} color="black" />
@@ -41,27 +34,7 @@ const Header = ({title}) => {
 export default Header
 
 const styles = StyleSheet.create({
-  // container:{
-  //   marginTop:Platform.OS === "android" ? StatusBar.currentHeight:30,
-  //   backgroundColor:colors.white,
-  //   width:"100%",
-  //   height:50,
-  //   flexDirection: 'row',
-  //   justifyContent:"center",
-  //   alignItems:"center",
-  //   position:"relative",
-  // },
-  // text:{
-  //   fontSize:22,
-  //   fontWeight: "500",
-  //   paddingLeft: 20,
-  //   verticalAlign:"Center",
-  //   paddingTop: 10,
-  //   flex: 1
-  // },
-  // logout:{
-  //   marginLeft: 'auto',
-  // }
+  
   container: {
     //marginTop:Platform.OS === "android" ? StatusBar.currentHeight:30,
     flexDirection: 'row', // Alinea los elementos en una fila

@@ -16,7 +16,7 @@ const Register = ({navigation}) => {
     const [errorEmail,setErrorEmail] = useState("")
     const [errorPassword,setErrorPassword] = useState("")
     const [errorConfirmPassword,setErrorConfirmPassword] = useState("")
-    const [triggerRegister,{data,isSuccess,isError,error}] = useRegisterMutation()
+    const [triggerRegister,{isError}] = useRegisterMutation()
     const dispatch = useDispatch()
 
     useEffect(()=>{

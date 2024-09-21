@@ -1,4 +1,4 @@
-import { Image, View, Pressable, TouchableOpacity,  StyleSheet, Text, useWindowDimensions} from 'react-native'
+import { Image, View, Pressable, StyleSheet, Text} from 'react-native'
 import { colors } from '../global/colors'
 import { texts } from '../global/texts';
 import Stars from '../components/Stars'
@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const ProductItem = ({product}) => {
 
-  const {width, height} = useWindowDimensions()
+  //const {width, height} = useWindowDimensions()
   const navigation = useNavigation()
 
   return (
@@ -23,9 +23,6 @@ const ProductItem = ({product}) => {
           <Text style={styles.name}>{product.title}</Text>
           <Text style={styles.price}>{texts.currency_symbol} {product.price}</Text>         
           <Stars />
-          {/* <TouchableOpacity style={styles.shareButton} onPress={()=>navigation.navigate("Detail",{id: product.id})}>
-                <Text style={styles.shareButtonText}>Comprar</Text>
-          </TouchableOpacity> */}
         </View>
         
    </Pressable>

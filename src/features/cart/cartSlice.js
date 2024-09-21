@@ -31,12 +31,6 @@ export const cartSlice = createSlice({
                 (acc += currentItem.price * currentItem.quantity),
               0
             );
-            // state.value = {
-            //   ...state.value,
-            //   items: itemsUpdated,
-            //   total,
-            //   updatedAt: new Date().toLocaleString(),
-            // };
             state.items  = itemsUpdated,
             state.total  = total
 

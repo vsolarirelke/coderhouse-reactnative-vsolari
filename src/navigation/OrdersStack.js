@@ -7,18 +7,16 @@ const Stack = createNativeStackNavigator()
 
 const OrdersStack = () => {
   return (
-    <Stack.Navigator
-            screenOptions={(
+    <Stack.Navigator screenOptions={(
                 () => {
                     return {
                         header: () => <Header title="Ordenes"/>
                     }
                 }
-            )}
-        >
-            <Stack.Screen name='Orders' component={Orders}/>
-            <Stack.Screen name='OrderDetail' component={OrderDetail}/>
-        </Stack.Navigator>
+    )}>
+        <Stack.Screen name='Orders' component={Orders}/>
+        <Stack.Screen name='OrderDetail' component={OrderDetail}/>
+    </Stack.Navigator>
   )
 }
 

@@ -12,14 +12,7 @@ const CartItem = ({item}) => {
   };
 
   return (
-    // <View style={styles.container}>
-    //   <View style={styles.containerText}>
-    //     <Text style={styles.title}>{item.title}</Text>
-    //     <Text style={styles.brand}>{item.brand}</Text>
-    //     <Text style={styles.price}>{item.price} $</Text>
-    //   </View>
-    //   <Entypo name="trash" size={48} color="black" />
-    // </View>
+
       <View style={styles.productCard}>
         <Image source={{ uri: item.thumbnail }} style={styles.productImage} />
         <View style={styles.productInfo}>
@@ -38,46 +31,9 @@ const CartItem = ({item}) => {
 
 export default CartItem
 
-// const styles = StyleSheet.create({
-//     container:{
-//         width:"90%",
-//         marginHorizontal:"5%",
-//         backgroundColor:colors.green2,
-//         marginVertical:10,
-//         padding:20,
-//         flexDirection:"row",
-//         alignItems:"center",
-//         justifyContent:"space-between",
-//         borderRadius:3
-//     },
-//     containerText:{
-//         width:"70%",
-//         gap:5
-//     },
-//     title:{
-//         color:"white",
-//         fontSize:20
-//     },
-//     brand:{
-//         color:"white",
-//         fontSize:16
-//     },
-//     price:{
-//         color:"white",
-//         fontSize:16,
-//         fontWeight:"bold"
-//     }
-// })
+
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: '#f7f7f7',
-  //   paddingTop:40,
-  // },
-  // productList: {
-  //   flex: 1,
-  //   paddingTop: 16,
-  // },
+  
   productCard: {
     width:"90%",
     marginHorizontal:"5%",
