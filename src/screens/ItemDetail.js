@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
 
     },
     productImg: {
-      width: 200,
-      height: 200,
+      width: 150,
+      height: 150,
     },
     name: {
         marginTop:10,

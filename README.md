@@ -21,7 +21,7 @@ La aplicación es un ejemplo funcional de una plataforma de Ecommerce desarrolla
 - [Firebase Realtime Database](https://firebase.google.com/products/realtime-database) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white)
 - [Firebase Authentication](https://firebase.google.com/products/auth) ![Firebase](https://img.shields.io/badge/Firebase%20Auth-FFCA28?style=for-the-badge&logo=firebase&logoColor=white)
 
-## 📸 Screens de la Aplicación
+## 📸 Screens y uso de la Aplicación
 
 1. **Pantalla de Inicio de Sesión**
 
@@ -64,7 +64,7 @@ La aplicación es un ejemplo funcional de una plataforma de Ecommerce desarrolla
    Descripción: Permite al usuario tomar una foto y agregarla a su perfil
 
 
-## 🚀 Instalación y Uso
+## 🚀 Instalación
 
 1. Crear una carpeta en tu computador donde descargaras el proyecto
 
